@@ -7,9 +7,55 @@
   <body>
     <h1>程式簡單生活:3</h1>
 	<br/>
-	<p>ctf時間</p>
-  <iframe src="https://calendar.google.com/calendar/embed?showNav=0&amp;showPrint=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=ctftime%40gmail.com&amp;color=%238C500B&amp;ctz=Asia%2FTaipei" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+	  
+	  
+<div id="app">
+  <h2>Todos:</h2>
+  <ol>
+    <li v-for="todo in todos">
+      <label>
+        <input type="checkbox"
+          v-on:change="toggle(todo)"
+          v-bind:checked="todo.done">
+
+        <del v-if="todo.done">
+          {{ todo.text }}
+        </del>
+        <span v-else>
+          {{ todo.text }}
+        </span>
+      </label>
+    </li>
+  </ol>
+</div>
+
+<iframe width="800" height="600" src="https://hackmd.io/s/SJQgrr2g-" frameborder="0"></iframe>
+<div id="ctf">
+   <h2>ctf時間</h2>
+<iframe src="https://calendar.google.com/calendar/embed?showNav=0&amp;showPrint=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=ctftime%40gmail.com&amp;color=%238C500B&amp;ctz=Asia%2FTaipei" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
   
 	
-  </body>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+new Vue({
+  el: "#app",
+  data: {
+    todos: [
+      { text: "A", done: false },
+      { text: "B", done: false },
+      { text: "C", done: true },
+      { text: "S", done: true }
+    ]
+  },
+  methods: {
+  	toggle: function(todo){
+    	todo.done = !todo.done
+    }
+  }
+}
+
+)
+</script>
+	
 </html>
